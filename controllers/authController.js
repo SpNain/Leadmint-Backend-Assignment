@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const sendOtpEmail = require("../services/otpService");
+const { generateToken } = require("../services/jwtService");
 
 exports.signup = async (req, res) => {
   const { name, email, password, mobile, role } = req.body;
@@ -46,5 +47,32 @@ exports.verifyOtp = async (req, res) => {
     res
       .status(500)
       .json({ msg: "OTP verification failed", error: err.message });
+  }
+};
+
+exports.login = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await User.findOne({ where: { email } });
+    
+    if (!user) return res.status(404).json({ msg: "User not found" });
+
+    if (!user.isVerified) return res.status(401).json({ msg: "Account not verified. Please verify OTP first." });
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) return res.status(401).json({ msg: "Incorrect password" });
+
+    const token = generateToken(user);
+    res.json({
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role
+      }
+    });
+  } catch (err) {
+    res.status(500).json({ msg: "Login failed", error: err.message });
   }
 };
