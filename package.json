@@ -1,0 +1,37 @@
+{
+  "name": "leadmint_backend_assignment",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1692.0",
+    "axios": "^1.9.0",
+    "bcrypt": "^6.0.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "google-auth-library": "^10.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.1",
+    "mysql2": "^3.14.1",
+    "sequelize": "^6.37.7",
+    "sib-api-v3-sdk": "^8.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SpNain/Leadmint-Backend-Assignment.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SpNain/Leadmint-Backend-Assignment/issues"
+  },
+  "homepage": "https://github.com/SpNain/Leadmint-Backend-Assignment#readme",
+  "description": ""
+}
