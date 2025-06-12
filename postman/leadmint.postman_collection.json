@@ -1,0 +1,2222 @@
+{
+	"info": {
+		"_postman_id": "3b8c5fa4-4a5a-471a-8652-80a83d095f32",
+		"name": "Leadmint_Backend_Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45807552",
+		"_collection_link": "https://hardeepnain.postman.co/workspace/604cd97b-135b-472a-806c-656b030f4a27/collection/45807552-3b8c5fa4-4a5a-471a-8652-80a83d095f32?action=share&source=collection_link&creator=45807552"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJqb2huQGV4YW1wbGUuY29tIiwicm9sZSI6InB1Ymxpc2hlciIsImlhdCI6MTc0OTY2NTUwNCwiZXhwIjoxNzQ5Njc5OTA0fQ.VAawAn4jfNNwBs6ecxVhrpR9HYmf6vYJMrGYySSE_44",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Hardeep\",\r\n  \"email\": \"0901dummy@gmail.com\",\r\n  \"password\": \"pass1234\",\r\n  \"mobile\": \"1234567890\",\r\n  \"role\": \"publisher\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						},
+						"description": "## Signup Endpoint\n\nThis endpoint allows users to create a new account by signing up. It requires specific parameters in the request body to successfully register a user.\n\n### Request\n\n**Method:** POST  \n**URL:** `{{baseUrl}}/api/auth/signup`\n\n#### Request Body Parameters\n\n- **name** (string): The full name of the user.\n    \n- **email** (string): The email address of the user. It must be unique and valid.\n    \n- **password** (string): The password for the account. It should meet the application's security requirements.\n    \n- **mobile** (string): The mobile phone number of the user.\n    \n- **role** (string): The role assigned to the user, such as \"publisher\".\n    \n\n### Response\n\nThe expected response for this endpoint is in JSON format. A successful signup will typically return a success message or user details, but in case of errors, you may receive a response like:\n\n``` json\n{\"msg\": \"\"}\n\n ```\n\n### Notes\n\n- A status code of **400** indicates a bad request, which may occur due to missing or invalid parameters.\n    \n- Ensure that all required fields are provided and correctly formatted to avoid errors during signup.\n    \n- The response message may not always provide specific details about the error; therefore, check the request parameters for accuracy."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Hardeep\",\r\n  \"email\": \"090dummy@example.com\",\r\n  \"password\": \"pass1234\",\r\n  \"mobile\": \"1234567890\",\r\n  \"role\": \"publisher\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/auth/signup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2f-M15DyY6sOg+5sHwhykQUDlLZ1iI\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jun 2025 05:43:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Signup successful. OTP sent to email.\"\n}"
+						},
+						{
+							"name": "error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Hardeep\",\r\n  \"email\": \"0901dummy@example.com\",\r\n  \"password\": \"pass1234\",\r\n  \"mobile\": \"1234567890\",\r\n  \"role\": \"publisher\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/auth/signup",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"auth",
+										"signup"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "30"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1e-XUnnImVJ5eaXal0ONHYugHg6tSA\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jun 2025 05:44:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Email already exists\"\n}"
+						}
+					]
+				},
+				{
+					"name": "google auth",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJqb2huQGV4YW1wbGUuY29tIiwicm9sZSI6InB1Ymxpc2hlciIsImlhdCI6MTc0OTY2NTUwNCwiZXhwIjoxNzQ5Njc5OTA0fQ.VAawAn4jfNNwBs6ecxVhrpR9HYmf6vYJMrGYySSE_44",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"accessToken\": \"<your_google_access_token_here>\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/google-auth",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"google-auth"
+							]
+						},
+						"description": "## Google Authentication Endpoint\n\nThis endpoint allows users to authenticate via Google by providing an access token. Upon successful authentication, the API returns a token and user details.\n\n### Request\n\n- **Method**: POST\n    \n- **URL**: `{{baseUrl}}/api/auth/google-auth`\n    \n- **Content-Type**: application/json\n    \n\n#### Request Body\n\nThe request body must contain the following parameter:\n\n- **accessToken** (string): The access token received from Google after user authentication.\n    \n\n**Example Request Body:**\n\n``` json\n{\n  \"accessToken\": \"your_access_token_here\"\n}\n\n ```\n\n### Response\n\nUpon successful authentication, the API responds with a JSON object containing:\n\n- **token** (string): A token that can be used for subsequent authenticated requests.\n    \n- **user** (object): An object containing user details, which includes:\n    \n    - **id** (integer): The unique identifier for the user.\n        \n    - **name** (string): The name of the user.\n        \n    - **email** (string): The email address of the user.\n        \n    - **role** (string): The role assigned to the user.\n        \n\n**Example Response:**\n\n``` json\n{\n  \"token\": \"\",\n  \"user\": {\n    \"id\": 0,\n    \"name\": \"\",\n    \"email\": \"\",\n    \"role\": \"\"\n  }\n}\n\n ```\n\n### Status Codes\n\n- **200 OK**: Authentication successful, user details and token returned.\n    \n- Other status codes may indicate errors in the authentication process."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"accessToken\": \"<your_google_access_token_here>\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/google-auth",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"google-auth"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "304"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"130-lRJnQ11s4wgN7IUxmJmTRj7/VfY\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jun 2025 05:30:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"<your_token_here>\",\n    \"user\": {\n        \"id\": 10,\n        \"name\": \"Unknown User\",\n        \"email\": \"hnspnain@gmail.com\",\n        \"role\": \"advertiser\"\n    }\n}"
+						},
+						{
+							"name": "error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"accessToken\": \"<your_google_access_token_here>\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/google-auth",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"google-auth"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "61"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3d-B1F4fTwhkEsZV4EP0gdPosYWZkQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jun 2025 05:35:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Invalid Google access token\",\n    \"error\": \"invalid_token\"\n}"
+						}
+					]
+				},
+				{
+					"name": "verify",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJqb2huQGV4YW1wbGUuY29tIiwicm9sZSI6InB1Ymxpc2hlciIsImlhdCI6MTc0OTY2NTUwNCwiZXhwIjoxNzQ5Njc5OTA0fQ.VAawAn4jfNNwBs6ecxVhrpR9HYmf6vYJMrGYySSE_44",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"0901dummy@gmail.com\",\r\n  \"otp\": \"393325\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/verify-otp",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"verify-otp"
+							]
+						},
+						"description": "## Verify OTP\n\nThis endpoint is used to verify a One-Time Password (OTP) sent to the user's email address. It allows users to confirm their identity during the authentication process.\n\n### Request\n\n- **Method**: POST\n    \n- **Endpoint**: `{{baseUrl}}/api/auth/verify-otp`\n    \n- **Content-Type**: application/json\n    \n\n### Request Body Parameters\n\n- **email** (string): The email address of the user attempting to verify the OTP.\n    \n- **otp** (string): The One-Time Password that the user received.\n    \n\n### Example Request\n\n``` json\n{\n  \"email\": \"0901dummy@gmail.com\",\n  \"otp\": \"393325\"\n}\n\n ```\n\n### Response\n\n- **Status Code**: 400\n    \n- **Content-Type**: application/json\n    \n\n### Response Format\n\nThe response will be in JSON format. An example response is:\n\n``` json\n{\n  \"msg\": \"\"\n}\n\n ```\n\nThe `msg` field may contain information regarding the status of the OTP verification. A successful verification will typically return a success message, while a failure may return an error message indicating the issue."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"0901dummy@gmail.com\",\r\n  \"otp\": \"393625\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/verify-otp",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"verify-otp"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2a-7qw2ndHvRHN1xgix8r2FUuNgojs\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jun 2025 05:50:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"OTP verified. Account activated.\"\n}"
+						},
+						{
+							"name": "error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"0901dummy@gmail.com\",\r\n  \"otp\": \"393325\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/verify-otp",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"verify-otp"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "21"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15-7eHxrk3r4LTt0NV/19UQbaASBew\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jun 2025 05:50:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Invalid OTP\"\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImVtYWlsIjoiMDkwMWR1bW15QGdtYWlsLmNvbSIsInJvbGUiOiJwdWJsaXNoZXIiLCJpYXQiOjE3NDk3MjA2MzEsImV4cCI6MTc0OTczNTAzMX0.INGUgo56IScBIUGdmUK1C49s2-7zrMXW5oFmDjiAZXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"0901dummy@gmail.com\",\r\n  \"password\": \"pass0234\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "## Login API Endpoint\n\nThis endpoint is used to authenticate a user by logging them in. It accepts user credentials and returns a response indicating the success or failure of the login attempt.\n\n### Request\n\n- **Method**: POST\n    \n- **Endpoint**: `{{baseUrl}}/api/auth/login`\n    \n- **Request Body**: The request must contain a JSON object with the following parameters:\n    \n    - `email` (string): The email address of the user attempting to log in.\n        \n    - `password` (string): The password associated with the user's account.\n        \n\n**Example Request Body**:\n\n``` json\n{\n  \"email\": \"user@example.com\",\n  \"password\": \"yourpassword\"\n}\n\n ```\n\n### Response\n\nThe response will be in JSON format and can vary based on the success or failure of the login attempt.\n\n- **Status Codes**:\n    \n    - `200 OK`: Successful login, which will return a token and user details.\n        \n    - `401 Unauthorized`: Indicates that the login attempt failed due to invalid credentials.\n        \n\n**Example Successful Response**:\n\n``` json\n{\n  \"token\": \"your_jwt_token\",\n  \"user\": {\n    \"id\": 1,\n    \"name\": \"John Doe\",\n    \"email\": \"user@example.com\",\n    \"role\": \"user\"\n  }\n}\n\n ```\n\n**Example Error Response**:\n\n``` json\n{\n  \"msg\": \"Invalid email or password.\"\n}\n\n ```\n\n### Notes\n\n- Ensure that the email and password are correctly provided in the request body.\n    \n- The response will include a user object containing the user's details upon successful authentication."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"0901dummy@gmail.com\",\r\n  \"password\": \"pass1234\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "299"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"12b-lr1FNp4qtKQsDgge6kJuM6HF4do\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jun 2025 09:30:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"<your_token_here>\",\n    \"user\": {\n        \"id\": 13,\n        \"name\": \"Hardeep\",\n        \"email\": \"0901dummy@gmail.com\",\n        \"role\": \"publisher\"\n    }\n}"
+						},
+						{
+							"name": "error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"0901dummy@gmail.com\",\r\n  \"password\": \"pass0234\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1c-1Zg4ZwhdFaVZ1ULoyZiJ3hl56G8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jun 2025 09:31:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Incorrect password\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "publisher",
+			"item": [
+				{
+					"name": "search app",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiJqb2huQGV4YW1wbGUuY29tIiwicm9sZSI6InB1Ymxpc2hlciIsImlhdCI6MTc0OTY2NTUwNCwiZXhwIjoxNzQ5Njc5OTA0fQ.VAawAn4jfNNwBs6ecxVhrpR9HYmf6vYJMrGYySSE_44",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/apps/search?query=whatsapp",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"apps",
+								"search"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "whatsapp"
+								}
+							]
+						},
+						"description": "### API Endpoint: Search Applications\n\nThis endpoint allows users to search for applications based on a query string. The search results will return a list of applications that match the specified query.\n\n#### Request\n\n- **Method**: GET\n    \n- **URL**: `{{baseUrl}}/api/apps/search`\n    \n- **Query Parameters**:\n    \n    - `query` (string, required): The search term used to find applications. For example, to search for WhatsApp, the query would be `whatsapp`.\n        \n- **Request Body**:\n    \n    - **Type**: Raw JSON\n        \n    - **Parameters**:\n        \n        - `authorization Token` (string, required): A valid access token to authenticate the request.\n            \n\n#### Response\n\n- **Status Code**: 200 OK\n    \n- **Content-Type**: application/json\n    \n- **Response Format**:\n    \n    - An array of application objects, each containing:\n        \n        - `appName` (string): The name of the application.\n            \n        - `logo` (string): A URL to the application's logo.\n            \n        - `packageName` (string): The package name of the application.\n            \n        - `link` (string): A URL link to the application.\n            \n\n#### Example Response\n\n``` json\n[\n  {\n    \"appName\": \"\",\n    \"logo\": \"\",\n    \"packageName\": \"\",\n    \"link\": \"\"\n  }\n]\n\n ```\n\nThis endpoint is useful for retrieving application information based on user-defined search criteria."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/apps/search?query=whatsapp",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"apps",
+										"search"
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "whatsapp"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2633"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a49-QSibZLCWeEv0idFJ8Ndm9KyoPZ8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jun 2025 07:31:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"appName\": \"WhatsApp Messenger\",\n        \"logo\": \"https://play-lh.googleusercontent.com/bYtqbOcTYOlgc6gqZ2rwb8lptHuwlNE75zYJu6Bn076-hTmvd96HH-6v7S0YUAAJXoJN\",\n        \"packageName\": \"com.whatsapp\",\n        \"link\": \"https://play.google.com/store/apps/details?id=com.whatsapp\"\n    },\n    {\n        \"appName\": \"WhatsApp Business\",\n        \"logo\": \"https://play-lh.googleusercontent.com/K6L_Ixmw0J9oTktAoHyEHvzQIfxEF1CIQ5aE0WHhdUeOgfAmn7KLhe47Q5XxZaXQ0g\",\n        \"packageName\": \"com.whatsapp.w4b\",\n        \"link\": \"https://play.google.com/store/apps/details?id=com.whatsapp.w4b\"\n    },\n    {\n        \"appName\": \"WhatsApp Wallpaper\",\n        \"logo\": \"https://play-lh.googleusercontent.com/7jfcnc_BKw-oGhC-aFOCQoO6cgAHXi5daP85zSzvOBGGv7FHCHL4f7oJjgswVCoXqsRp\",\n        \"packageName\": \"com.whatsapp.wallpaper\",\n        \"link\": \"https://play.google.com/store/apps/details?id=com.whatsapp.wallpaper\"\n    },\n    {\n        \"appName\": \"Messenger\",\n        \"logo\": \"https://play-lh.googleusercontent.com/JfQNUnohpuq5IP65WN9C109VjLjDEj2tZYlPtComLznQfGeeoesubOaHGBcpZdXKuHU\",\n        \"packageName\": \"com.facebook.orca\",\n        \"link\": \"https://play.google.com/store/apps/details?id=com.facebook.orca\"\n    },\n    {\n        \"appName\": \"Signal Private Messenger\",\n        \"logo\": \"https://play-lh.googleusercontent.com/FtGKSwVtpmMxKoJrJuI837DkYGRsqlMdiVPAd8bomLQZ3_Hc55XokY_dYdXKgGagiYs\",\n        \"packageName\": \"org.thoughtcrime.securesms\",\n        \"link\": \"https://play.google.com/store/apps/details?id=org.thoughtcrime.securesms\"\n    },\n    {\n        \"appName\": \"Google Messages\",\n        \"logo\": \"https://play-lh.googleusercontent.com/9AZOTXU_CpreTFAXUPAmJNkm8VGCb1C90fjJ9pHGcVmpGMDSTq3cUbaQJdBT9Tdp9A\",\n        \"packageName\": \"com.google.android.apps.messaging\",\n        \"link\": \"https://play.google.com/store/apps/details?id=com.google.android.apps.messaging\"\n    },\n    {\n        \"appName\": \"Telegram\",\n        \"logo\": \"https://play-lh.googleusercontent.com/ZU9cSsyIJZo6Oy7HTHiEPwZg0m2Crep-d5ZrfajqtsH-qgUXSqKpNA2FpPDTn-7qA5Q\",\n        \"packageName\": \"org.telegram.messenger\",\n        \"link\": \"https://play.google.com/store/apps/details?id=org.telegram.messenger\"\n    },\n    {\n        \"appName\": \"AutoResponder for WA\",\n        \"logo\": \"https://play-lh.googleusercontent.com/5VIwDAL7LuQReE0M00kBnoQe8m5vFnaFz3AeOFN0bHZismKFz67PBoEVAAYZjfe9ntc\",\n        \"packageName\": \"tkstudio.autoresponderforwa\",\n        \"link\": \"https://play.google.com/store/apps/details?id=tkstudio.autoresponderforwa\"\n    },\n    {\n        \"appName\": \"imo-International Calls & Chat\",\n        \"logo\": \"https://play-lh.googleusercontent.com/0IdG4GLN7T73OrfRWwb3M1dyuFPmuAftPepnHS6p8qoTGvXXeHKHQY54-B8OXEbAZGI\",\n        \"packageName\": \"com.imo.android.imoim\",\n        \"link\": \"https://play.google.com/store/apps/details?id=com.imo.android.imoim\"\n    },\n    {\n        \"appName\": \"Rakuten Viber Messenger\",\n        \"logo\": \"https://play-lh.googleusercontent.com/EbQM-vsHv42Hg6qZvuK47q_cK3-KObc9GRlhNBWebX0AWrg5nMD92Kniqz8Z1BFpD3U\",\n        \"packageName\": \"com.viber.voip\",\n        \"link\": \"https://play.google.com/store/apps/details?id=com.viber.voip\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "add app",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImVtYWlsIjoiMDkwMWR1bW15QGdtYWlsLmNvbSIsInJvbGUiOiJwdWJsaXNoZXIiLCJpYXQiOjE3NDk3MjA2MzEsImV4cCI6MTc0OTczNTAzMX0.INGUgo56IScBIUGdmUK1C49s2-7zrMXW5oFmDjiAZXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "appName",
+									"value": "WhatsApp",
+									"type": "text"
+								},
+								{
+									"key": "packageName",
+									"value": "com.whatsapp",
+									"type": "text"
+								},
+								{
+									"key": "link",
+									"value": "https://play.google.com/store/apps/details?id=com.whatsapp",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/C:/Users/SP Nain/Downloads/LeetCode_logo_rvs.png"
+								},
+								{
+									"key": "coinName",
+									"value": "Gold",
+									"type": "text"
+								},
+								{
+									"key": "coinValue",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "postback",
+									"value": "https://dummy.com/postback",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/apps/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"apps",
+								""
+							]
+						},
+						"description": "## Add Application\n\nThis endpoint allows you to add a new application to the system. It is a POST request that requires specific details about the application in the form of form-data.\n\n### Request\n\n- **Method**: POST\n    \n- **Endpoint**: `{{baseUrl}}/api/apps/`\n    \n\n#### Request Body\n\nThe request body must include the following parameters in form-data format:\n\n- **appName** (text): The name of the application.\n    \n- **packageName** (text): The package name of the application.\n    \n- **link** (text): A URL link related to the application.\n    \n- **logo** (file/text): The logo file of the application or the URL.\n    \n- **coinName** (text): The name of the coin associated with the application.\n    \n- **coinValue** (text): The value of the coin.\n    \n- **postback** (text): A postback URL for tracking purposes.\n    \n\n### Response\n\nUpon successful creation of the application, the API will respond with a status code of **201** and a JSON object containing the following structure:\n\n``` json\n{\n  \"msg\": \"\",\n  \"app\": {\n    \"id\": 0,\n    \"appName\": \"\",\n    \"packageName\": \"\",\n    \"link\": \"\",\n    \"logo\": \"\",\n    \"coinName\": \"\",\n    \"coinValue\": \"\",\n    \"postback\": \"\",\n    \"userId\": 0,\n    \"updatedAt\": \"\",\n    \"createdAt\": \"\"\n  }\n}\n\n ```\n\n#### Response Fields\n\n- **msg**: A message indicating the status of the request (can be empty).\n    \n- **app**: An object containing the details of the created application, including:\n    \n    - **id**: Unique identifier for the application.\n        \n    - **appName**: Name of the application.\n        \n    - **packageName**: Package name of the application.\n        \n    - **link**: URL link related to the application.\n        \n    - **logo**: URL or identifier for the logo.\n        \n    - **coinName**: Name of the associated coin.\n        \n    - **coinValue**: Value of the associated coin.\n        \n    - **postback**: Postback URL.\n        \n    - **userId**: Identifier for the user who created the application.\n        \n    - **updatedAt**: Timestamp of the last update.\n        \n    - **createdAt**: Timestamp of when the application was created."
+					},
+					"response": [
+						{
+							"name": "success : logo as url",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "appName",
+											"value": "WhatsApp",
+											"type": "text"
+										},
+										{
+											"key": "packageName",
+											"value": "com.whatsapp",
+											"type": "text"
+										},
+										{
+											"key": "link",
+											"value": "https://play.google.com/store/apps/details?id=com.whatsapp",
+											"type": "text"
+										},
+										{
+											"key": "logo",
+											"value": "https://play-lh.googleusercontent.com/bYtqbOcTYOlgc6gqZ2rwb8lptHuwlNE75zYJu6Bn076-hTmvd96HH-6v7S0YUAAJXoJN",
+											"type": "text"
+										},
+										{
+											"key": "coinName",
+											"value": "Gold",
+											"type": "text"
+										},
+										{
+											"key": "coinValue",
+											"value": "50",
+											"type": "text"
+										},
+										{
+											"key": "postback",
+											"value": "https://dummy.com/postback",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/apps/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"apps",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "446"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1be-suczSEPRoLunrCeKwbRXnbxLldQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jun 2025 09:44:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"App added successfully\",\n    \"app\": {\n        \"id\": 1,\n        \"appName\": \"WhatsApp\",\n        \"packageName\": \"com.whatsapp\",\n        \"link\": \"https://play.google.com/store/apps/details?id=com.whatsapp\",\n        \"logo\": \"https://play-lh.googleusercontent.com/bYtqbOcTYOlgc6gqZ2rwb8lptHuwlNE75zYJu6Bn076-hTmvd96HH-6v7S0YUAAJXoJN\",\n        \"coinName\": \"Gold\",\n        \"coinValue\": \"50\",\n        \"postback\": \"https://dummy.com/postback\",\n        \"userId\": 13,\n        \"updatedAt\": \"2025-06-12T09:44:37.966Z\",\n        \"createdAt\": \"2025-06-12T09:44:37.966Z\"\n    }\n}"
+						},
+						{
+							"name": "success : logo as file",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "appName",
+											"value": "WhatsApp",
+											"type": "text"
+										},
+										{
+											"key": "packageName",
+											"value": "com.whatsapp",
+											"type": "text"
+										},
+										{
+											"key": "link",
+											"value": "https://play.google.com/store/apps/details?id=com.whatsapp",
+											"type": "text"
+										},
+										{
+											"key": "logo",
+											"type": "file",
+											"src": "/C:/Users/SP Nain/Downloads/LeetCode_logo_rvs.png"
+										},
+										{
+											"key": "coinName",
+											"value": "Gold",
+											"type": "text"
+										},
+										{
+											"key": "coinValue",
+											"value": "50",
+											"type": "text"
+										},
+										{
+											"key": "postback",
+											"value": "https://dummy.com/postback",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/apps/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"apps",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "446"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1be-SgLUbtDQZ5yttfMvlO+rNlNiYCE\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jun 2025 09:49:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"App added successfully\",\n    \"app\": {\n        \"id\": 2,\n        \"appName\": \"WhatsApp\",\n        \"packageName\": \"com.whatsapp\",\n        \"link\": \"https://play.google.com/store/apps/details?id=com.whatsapp\",\n        \"logo\": \"https://leadmint-backend-assignment-bucket.s3.ap-south-1.amazonaws.com/1749721752134-LeetCode_logo_rvs.png\",\n        \"coinName\": \"Gold\",\n        \"coinValue\": \"50\",\n        \"postback\": \"https://dummy.com/postback\",\n        \"userId\": 13,\n        \"updatedAt\": \"2025-06-12T09:49:12.931Z\",\n        \"createdAt\": \"2025-06-12T09:49:12.931Z\"\n    }\n}"
+						},
+						{
+							"name": "error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "appName",
+											"value": "WhatsApp",
+											"type": "text"
+										},
+										{
+											"key": "packageName",
+											"value": "com.whatsapp",
+											"type": "text"
+										},
+										{
+											"key": "link",
+											"value": "https://play.google.com/store/apps/details?id=com.whatsapp",
+											"type": "text"
+										},
+										{
+											"key": "logo",
+											"type": "file",
+											"src": "/C:/Users/SP Nain/Downloads/LeetCode_logo_rvs.png"
+										},
+										{
+											"key": "coinName",
+											"value": "Gold",
+											"type": "text"
+										},
+										{
+											"key": "coinValue",
+											"value": "50",
+											"type": "text"
+										},
+										{
+											"key": "postback",
+											"value": "https://dummy.com/postback",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/apps/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"apps",
+										""
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "48"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"30-QB+QYjhCQgdrY4cXbMcKD+qEn0Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jun 2025 09:54:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Access denied: publisher role required\"\n}"
+						}
+					]
+				},
+				{
+					"name": "count apps",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImVtYWlsIjoiMDkwMWR1bW15QGdtYWlsLmNvbSIsInJvbGUiOiJwdWJsaXNoZXIiLCJpYXQiOjE3NDk3MjA2MzEsImV4cCI6MTc0OTczNTAzMX0.INGUgo56IScBIUGdmUK1C49s2-7zrMXW5oFmDjiAZXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/apps/count",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"apps",
+								"count"
+							]
+						},
+						"description": "## Endpoint Description\n\nThis endpoint allows you to retrieve the count of applications based on specific parameters. It is a GET request to the `/api/apps/count` endpoint, which returns the total number of applications that match the provided criteria.\n\n#### Request\n\n- **Method**: GET\n    \n- **URL**: `{{baseUrl}}/api/apps/count`\n    \n- **Request Body**:\n    \n    - **Type**: Raw JSON\n        \n    - **Parameters**:\n        \n        - `authorization Token` (string, required): A valid access token to authenticate the request.\n            \n\n### Response Structure\n\nUpon a successful request, the server responds with a status code of `200` and a JSON object containing:\n\n- **count** (integer): The total number of applications that match the specified criteria.\n    \n\n**Example Response:**\n\n``` json\n{\n  \"count\": 0\n}\n\n ```\n\nThis indicates that there are currently no applications that match the provided parameters."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/apps/count",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"apps",
+										"count"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "11"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b-hRuIfkAGnfwKvpTzajm4bAWdKxE\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jun 2025 09:58:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"count\": 2\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "advertiser",
+			"item": [
+				{
+					"name": "add app",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImVtYWlsIjoiMDkwMWR1bW15QGdtYWlsLmNvbSIsInJvbGUiOiJwdWJsaXNoZXIiLCJpYXQiOjE3NDk3MjA2MzEsImV4cCI6MTc0OTczNTAzMX0.INGUgo56IScBIUGdmUK1C49s2-7zrMXW5oFmDjiAZXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "appName",
+									"value": "WhatsApp",
+									"type": "text"
+								},
+								{
+									"key": "packageName",
+									"value": "com.whatsapp",
+									"type": "text"
+								},
+								{
+									"key": "link",
+									"value": "https://play.google.com/store/apps/details?id=com.whatsapp",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/C:/Users/SP Nain/Downloads/LeetCode_logo_rvs.png"
+								},
+								{
+									"key": "coinName",
+									"value": "Gold",
+									"type": "text"
+								},
+								{
+									"key": "coinValue",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "postback",
+									"value": "https://dummy.com/postback",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/apps/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"apps",
+								""
+							]
+						},
+						"description": "## Add Application\n\nThis endpoint allows you to add a new application to the system. It is a POST request that requires specific details about the application in the form of form-data.\n\n### Request\n\n- **Method**: POST\n    \n- **Endpoint**: `{{baseUrl}}/api/apps/`\n    \n\n#### Request Body\n\nThe request body must include the following parameters in form-data format:\n\n- **appName** (text): The name of the application.\n    \n- **packageName** (text): The package name of the application.\n    \n- **link** (text): A URL link related to the application.\n    \n- **logo** (file/text): The logo file of the application or the URL.\n    \n- **coinName** (text): The name of the coin associated with the application.\n    \n- **coinValue** (text): The value of the coin.\n    \n- **postback** (text): A postback URL for tracking purposes.\n    \n\n### Response\n\nUpon successful creation of the application, the API will respond with a status code of **201** and a JSON object containing the following structure:\n\n``` json\n{\n  \"msg\": \"\",\n  \"app\": {\n    \"id\": 0,\n    \"appName\": \"\",\n    \"packageName\": \"\",\n    \"link\": \"\",\n    \"logo\": \"\",\n    \"coinName\": \"\",\n    \"coinValue\": \"\",\n    \"postback\": \"\",\n    \"userId\": 0,\n    \"updatedAt\": \"\",\n    \"createdAt\": \"\"\n  }\n}\n\n ```\n\n#### Response Fields\n\n- **msg**: A message indicating the status of the request (can be empty).\n    \n- **app**: An object containing the details of the created application, including:\n    \n    - **id**: Unique identifier for the application.\n        \n    - **appName**: Name of the application.\n        \n    - **packageName**: Package name of the application.\n        \n    - **link**: URL link related to the application.\n        \n    - **logo**: URL or identifier for the logo.\n        \n    - **coinName**: Name of the associated coin.\n        \n    - **coinValue**: Value of the associated coin.\n        \n    - **postback**: Postback URL.\n        \n    - **userId**: Identifier for the user who created the application.\n        \n    - **updatedAt**: Timestamp of the last update.\n        \n    - **createdAt**: Timestamp of when the application was created."
+					},
+					"response": [
+						{
+							"name": "success : logo as url",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/apps/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"apps",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "446"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1be-suczSEPRoLunrCeKwbRXnbxLldQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jun 2025 09:44:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"App added successfully\",\n    \"app\": {\n        \"id\": 1,\n        \"appName\": \"WhatsApp\",\n        \"packageName\": \"com.whatsapp\",\n        \"link\": \"https://play.google.com/store/apps/details?id=com.whatsapp\",\n        \"logo\": \"https://play-lh.googleusercontent.com/bYtqbOcTYOlgc6gqZ2rwb8lptHuwlNE75zYJu6Bn076-hTmvd96HH-6v7S0YUAAJXoJN\",\n        \"coinName\": \"Gold\",\n        \"coinValue\": \"50\",\n        \"postback\": \"https://dummy.com/postback\",\n        \"userId\": 13,\n        \"updatedAt\": \"2025-06-12T09:44:37.966Z\",\n        \"createdAt\": \"2025-06-12T09:44:37.966Z\"\n    }\n}"
+						},
+						{
+							"name": "success : logo as file",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "appName",
+											"value": "WhatsApp",
+											"type": "text"
+										},
+										{
+											"key": "packageName",
+											"value": "com.whatsapp",
+											"type": "text"
+										},
+										{
+											"key": "link",
+											"value": "https://play.google.com/store/apps/details?id=com.whatsapp",
+											"type": "text"
+										},
+										{
+											"key": "logo",
+											"type": "file",
+											"src": "/C:/Users/SP Nain/Downloads/LeetCode_logo_rvs.png"
+										},
+										{
+											"key": "coinName",
+											"value": "Gold",
+											"type": "text"
+										},
+										{
+											"key": "coinValue",
+											"value": "50",
+											"type": "text"
+										},
+										{
+											"key": "postback",
+											"value": "https://dummy.com/postback",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/apps/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"apps",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "446"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1be-SgLUbtDQZ5yttfMvlO+rNlNiYCE\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jun 2025 09:49:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"App added successfully\",\n    \"app\": {\n        \"id\": 2,\n        \"appName\": \"WhatsApp\",\n        \"packageName\": \"com.whatsapp\",\n        \"link\": \"https://play.google.com/store/apps/details?id=com.whatsapp\",\n        \"logo\": \"https://leadmint-backend-assignment-bucket.s3.ap-south-1.amazonaws.com/1749721752134-LeetCode_logo_rvs.png\",\n        \"coinName\": \"Gold\",\n        \"coinValue\": \"50\",\n        \"postback\": \"https://dummy.com/postback\",\n        \"userId\": 13,\n        \"updatedAt\": \"2025-06-12T09:49:12.931Z\",\n        \"createdAt\": \"2025-06-12T09:49:12.931Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "create campaign",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImVtYWlsIjoiMDkwMWR1bW15QGdtYWlsLmNvbSIsInJvbGUiOiJwdWJsaXNoZXIiLCJpYXQiOjE3NDk3MjA2MzEsImV4cCI6MTc0OTczNTAzMX0.INGUgo56IScBIUGdmUK1C49s2-7zrMXW5oFmDjiAZXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "appId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "campaignName",
+									"value": "Summer Sale",
+									"type": "text"
+								},
+								{
+									"key": "appPackageName",
+									"value": "com.whatsapp",
+									"type": "text"
+								},
+								{
+									"key": "link",
+									"value": "https://play.google.com/store/apps/details?id=com.whatsapp",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/C:/Users/SP Nain/Downloads/25_percent.png"
+								},
+								{
+									"key": "banner",
+									"type": "file",
+									"src": "/C:/Users/SP Nain/Downloads/50_percent.png"
+								},
+								{
+									"key": "bidPrice",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "dailyBudget",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "dailyConversion",
+									"value": "1000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/campaigns",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"campaigns"
+							]
+						},
+						"description": "## Create Campaign\n\nThis endpoint allows you to create a new marketing campaign for a specified application. By sending a POST request to `{{baseUrl}}/api/campaigns`, you can provide the necessary details for the campaign, which will be processed and stored in the system.\n\n### Request Body\n\nThe request must be sent using `form-data` with the following parameters:\n\n- **appId** (text): The unique identifier for the application associated with the campaign.\n    \n- **campaignName** (text): The name of the campaign you are creating.\n    \n- **appPackageName** (text): The package name of the application for which the campaign is being created.\n    \n- **link** (text): The URL link related to the campaign.\n    \n- **logo** (file/text): An image file representing the logo of the campaign or the url of logo.\n    \n- **banner** (file/text): An image file for the campaign banner or the url of banner.\n    \n- **bidPrice** (text): The bid price set for the campaign.\n    \n- **dailyBudget** (text): The daily budget allocated for the campaign.\n    \n- **dailyConversion** (text): The expected daily conversions from the campaign.\n    \n\n### Response\n\nUpon successful creation of the campaign, the server will respond with a `201 Created` status. The response will be in JSON format and will include the following structure:\n\n``` json\n{\n    \"msg\": \"\",\n    \"campaign\": {\n        \"id\": 0,\n        \"appId\": \"\",\n        \"campaignName\": \"\",\n        \"appPackageName\": \"\",\n        \"link\": \"\",\n        \"logo\": \"\",\n        \"banner\": \"\",\n        \"bidPrice\": \"\",\n        \"dailyBudget\": \"\",\n        \"dailyConversion\": \"\",\n        \"updatedAt\": \"\",\n        \"createdAt\": \"\"\n    }\n}\n\n ```\n\n- **msg**: A message indicating the result of the request (typically empty on success).\n    \n- **campaign**: An object containing the details of the created campaign, including its unique ID and all parameters that were submitted.\n    \n\nMake sure to provide all required fields in the request to ensure successful campaign creation."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "appId",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "campaignName",
+											"value": "Summer Sale",
+											"type": "text"
+										},
+										{
+											"key": "appPackageName",
+											"value": "com.whatsapp",
+											"type": "text"
+										},
+										{
+											"key": "link",
+											"value": "https://play.google.com/store/apps/details?id=com.whatsapp",
+											"type": "text"
+										},
+										{
+											"key": "logo",
+											"type": "file",
+											"src": "/C:/Users/SP Nain/Downloads/25_percent.png"
+										},
+										{
+											"key": "banner",
+											"type": "file",
+											"src": "/C:/Users/SP Nain/Downloads/50_percent.png"
+										},
+										{
+											"key": "bidPrice",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "dailyBudget",
+											"value": "100",
+											"type": "text"
+										},
+										{
+											"key": "dailyConversion",
+											"value": "1000",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/campaigns",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"campaigns"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "545"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"221-keI83i2ZEfATa5cQraNx+sZoBWY\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jun 2025 10:42:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Campaign created\",\n    \"campaign\": {\n        \"id\": 1,\n        \"appId\": \"2\",\n        \"campaignName\": \"Summer Sale\",\n        \"appPackageName\": \"com.whatsapp\",\n        \"link\": \"https://play.google.com/store/apps/details?id=com.whatsapp\",\n        \"logo\": \"https://leadmint-backend-assignment-bucket.s3.ap-south-1.amazonaws.com/1749724927413-25_percent.png\",\n        \"banner\": \"https://leadmint-backend-assignment-bucket.s3.ap-south-1.amazonaws.com/1749724928046-50_percent.png\",\n        \"bidPrice\": \"3\",\n        \"dailyBudget\": \"100\",\n        \"dailyConversion\": \"1000\",\n        \"updatedAt\": \"2025-06-12T10:42:08.451Z\",\n        \"createdAt\": \"2025-06-12T10:42:08.451Z\"\n    }\n}"
+						},
+						{
+							"name": "error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "appId",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "campaignName",
+											"value": "Summer Sale",
+											"type": "text"
+										},
+										{
+											"key": "appPackageName",
+											"value": "com.whatsapp",
+											"type": "text"
+										},
+										{
+											"key": "link",
+											"value": "https://play.google.com/store/apps/details?id=com.whatsapp",
+											"type": "text"
+										},
+										{
+											"key": "logo",
+											"type": "file",
+											"src": "/C:/Users/SP Nain/Downloads/25_percent.png"
+										},
+										{
+											"key": "banner",
+											"type": "file",
+											"src": "/C:/Users/SP Nain/Downloads/50_percent.png"
+										},
+										{
+											"key": "bidPrice",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "dailyBudget",
+											"value": "100",
+											"type": "text"
+										},
+										{
+											"key": "dailyConversion",
+											"value": "1000",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/campaigns",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"campaigns"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "49"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"31-NEfKg1CHPBVl8qdmFYAZBUixMG0\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jun 2025 10:41:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Access denied: advertiser role required\"\n}"
+						}
+					]
+				},
+				{
+					"name": "edit campaign",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImVtYWlsIjoiMDkwMWR1bW15QGdtYWlsLmNvbSIsInJvbGUiOiJwdWJsaXNoZXIiLCJpYXQiOjE3NDk3MjA2MzEsImV4cCI6MTc0OTczNTAzMX0.INGUgo56IScBIUGdmUK1C49s2-7zrMXW5oFmDjiAZXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "appId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "campaignName",
+									"value": "Summer Sale live",
+									"type": "text"
+								},
+								{
+									"key": "appPackageName",
+									"value": "com.whatsapp",
+									"type": "text"
+								},
+								{
+									"key": "link",
+									"value": "https://play.google.com/store/apps/details?id=com.whatsapp",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/C:/Users/SP Nain/Downloads/25_percent.png"
+								},
+								{
+									"key": "banner",
+									"type": "file",
+									"src": "/C:/Users/SP Nain/Downloads/75_percent.png"
+								},
+								{
+									"key": "bidPrice",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "dailyBudget",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "dailyConversion",
+									"value": "1000",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/campaigns/1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"campaigns",
+								"1"
+							]
+						},
+						"description": "## Update Campaign\n\nThis endpoint allows you to update an existing marketing campaign for a specified application. By sending a **PUT** request to `{{baseUrl}}/api/campaigns/1`, you can provide the necessary details for the campaign update, which will be processed and stored in the system.\n\n### Request Body\n\nThe request must be sent using `form-data` with the following parameters:\n\n- **appId** (text): The unique identifier for the application associated with the campaign.\n    \n- **campaignName** (text): The name of the campaign you are updating.\n    \n- **appPackageName** (text): The package name of the application for which the campaign is being updated.\n    \n- **link** (text): The URL link related to the campaign.\n    \n- **logo** (file/text): An image file representing the logo of the campaign or the url of logo.\n    \n- **banner** (file/text): An image file for the campaign banner or the url of banner.\n    \n- **bidPrice** (text): The bid price set for the campaign.\n    \n- **dailyBudget** (text): The daily budget allocated for the campaign.\n    \n- **dailyConversion** (text): The expected daily conversions from the campaign.\n    \n\n### Response\n\nUpon successful update of the campaign, the server will respond with a `200 OK` status. The response will be in JSON format and will include the following structure:\n\n``` json\n{\n    \"msg\": \"\",\n    \"campaign\": {\n        \"id\": 0,\n        \"appId\": 0,\n        \"campaignName\": \"\",\n        \"appPackageName\": \"\",\n        \"link\": \"\",\n        \"logo\": \"\",\n        \"banner\": \"\",\n        \"bidPrice\": \"\",\n        \"dailyBudget\": \"\",\n        \"dailyConversion\": \"\",\n        \"createdAt\": \"\",\n        \"updatedAt\": \"\"\n    }\n}\n\n ```\n\n- **msg**: A message indicating the result of the request (typically empty on success).\n    \n- **campaign**: An object containing the details of the updated campaign, including its unique ID and all parameters that were submitted.\n    \n\nMake sure to provide all required fields in the request to ensure successful campaign update."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "appId",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "campaignName",
+											"value": "Summer Sale live",
+											"type": "text"
+										},
+										{
+											"key": "appPackageName",
+											"value": "com.whatsapp",
+											"type": "text"
+										},
+										{
+											"key": "link",
+											"value": "https://play.google.com/store/apps/details?id=com.whatsapp",
+											"type": "text"
+										},
+										{
+											"key": "logo",
+											"type": "file",
+											"src": "/C:/Users/SP Nain/Downloads/25_percent.png"
+										},
+										{
+											"key": "banner",
+											"type": "file",
+											"src": "/C:/Users/SP Nain/Downloads/75_percent.png"
+										},
+										{
+											"key": "bidPrice",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "dailyBudget",
+											"value": "100",
+											"type": "text"
+										},
+										{
+											"key": "dailyConversion",
+											"value": "1000",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/campaigns/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"campaigns",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "548"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"224-9OaiYbJ9yFWfa7GuIcJ5c6aMXWY\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jun 2025 10:49:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Campaign updated\",\n    \"campaign\": {\n        \"id\": 1,\n        \"campaignName\": \"Summer Sale live\",\n        \"appPackageName\": \"com.whatsapp\",\n        \"link\": \"https://play.google.com/store/apps/details?id=com.whatsapp\",\n        \"logo\": \"https://leadmint-backend-assignment-bucket.s3.ap-south-1.amazonaws.com/1749724927413-25_percent.png\",\n        \"banner\": \"https://leadmint-backend-assignment-bucket.s3.ap-south-1.amazonaws.com/1749725379583-75_percent.png\",\n        \"bidPrice\": \"3\",\n        \"dailyBudget\": \"100\",\n        \"dailyConversion\": \"1000\",\n        \"createdAt\": \"2025-06-12T10:42:08.000Z\",\n        \"updatedAt\": \"2025-06-12T10:49:40.058Z\",\n        \"appId\": 2\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "public",
+			"item": [
+				{
+					"name": "click",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImVtYWlsIjoiMDkwMWR1bW15QGdtYWlsLmNvbSIsInJvbGUiOiJwdWJsaXNoZXIiLCJpYXQiOjE3NDk3MjA2MzEsImV4cCI6MTc0OTczNTAzMX0.INGUgo56IScBIUGdmUK1C49s2-7zrMXW5oFmDjiAZXA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"campaignId\": 1,\r\n  \"appId\": 3\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/click",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"click"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"campaignId\": 1,\r\n  \"appId\": 2\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/click",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"click"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "181"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b5-ejE0e9uV5ZLDCqmw95ShiuxwjSU\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jun 2025 11:48:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Click logged\",\n    \"click\": {\n        \"timestamp\": \"2025-06-12T11:48:26.923Z\",\n        \"id\": 1,\n        \"campaignId\": 1,\n        \"appId\": 2,\n        \"updatedAt\": \"2025-06-12T11:48:26.926Z\",\n        \"createdAt\": \"2025-06-12T11:48:26.926Z\"\n    }\n}"
+						},
+						{
+							"name": "error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"campaignId\": 1,\r\n  \"appId\": 3\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/click",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"click"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "37"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"25-R1+mzv0z+KdReTV5/IEzmtwlyXo\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jun 2025 11:49:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"msg\": \"Invalid campaignId or appId\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
