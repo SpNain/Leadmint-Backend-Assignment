@@ -14,6 +14,7 @@ app.use(express.json());
 const User = require("./models/User");
 const App = require("./models/App");
 const Campaign = require("./models/Campaign");
+const Click = require("./models/Click");
 
 // Routes
 const authRoutes = require("./routes/authRoutes");
@@ -25,9 +26,16 @@ app.use("/api/apps", appRoutes);
 const campaignRoutes = require("./routes/campaignRoutes");
 app.use("/api/campaigns", campaignRoutes);
 
+const clickRoutes = require("./routes/clickRoutes");
+app.use("/api/click", clickRoutes);
+
 // Associations
 App.belongsTo(User, { foreignKey: "userId" });
+
 Campaign.belongsTo(App, { foreignKey: "appId" });
+
+Click.belongsTo(Campaign, { foreignKey: "campaignId" });
+Click.belongsTo(App, { foreignKey: "appId" });
 
 async function initiate() {
   try {
