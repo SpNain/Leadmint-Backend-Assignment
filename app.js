@@ -10,9 +10,20 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Models
+const User = require("./models/User");
+const App = require("./models/App");
+
 // Routes
 const authRoutes = require("./routes/authRoutes");
 app.use("/api/auth", authRoutes);
+
+const appRoutes = require("./routes/appRoutes");
+app.use("/api/apps", appRoutes);
+
+// Associations
+App.belongsTo(User, { foreignKey: "userId" });
+
 
 async function initiate() {
   try {
