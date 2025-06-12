@@ -5,5 +5,6 @@ const authController = require("../controllers/authController");
 router.post("/signup", authController.signup);
 router.post("/verify-otp", authController.verifyOtp);
 router.post("/login", authController.login);
+router.post("/google-auth", authController.googleAuth);
 
 module.exports = router;

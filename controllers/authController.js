@@ -2,6 +2,7 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const sendOtpEmail = require("../services/otpService");
 const { generateToken } = require("../services/jwtService");
+const verifyGoogleToken = require("../services/googleAuthService");
 
 exports.signup = async (req, res) => {
   const { name, email, password, mobile, role } = req.body;
@@ -74,5 +75,43 @@ exports.login = async (req, res) => {
     });
   } catch (err) {
     res.status(500).json({ msg: "Login failed", error: err.message });
+  }
+};
+
+exports.googleAuth = async (req, res) => {
+  const { accessToken } = req.body;
+
+  if (!accessToken) {
+    return res.status(400).json({ msg: "Google access token is required" });
+  }
+
+  try {
+    const { email, name } = await verifyGoogleToken(accessToken);
+
+    let user = await User.findOne({ where: { email } });
+
+    if (!user) {
+      user = await User.create({
+        name,
+        email,
+        password: "",
+        role: "advertiser",
+        isVerified: true,
+      });
+    }
+    const token = generateToken(user);
+
+    res.json({
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
+    });
+  } catch (err) {
+    console.error("Google Auth Error:", err.message);
+    res.status(401).json({ msg: "Invalid Google access token", error: err.message });
   }
 };
